@@ -25,7 +25,7 @@ int main(int argc, char * argv[]) {
     string base = "/tmp";
 
     const string src_loc = string(cwd) + '/' + src;
-    const string bin_loc = base + bin_loc;
+    const string bin_loc = base + src_loc;
 
     struct stat bin_stat;
     // If the binary exists check is the binary is newer than the source
@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
         }
     }
 
-    string compiler = "/usr/bin/g++ -O2 -o " + bin_loc + " -xc - ";
+    string compiler = "/usr/bin/g++ -O2 -o " + bin_loc + " -xc++ - ";
 
     std::ifstream infile(src.c_str());
     string source_contents = "\n";
