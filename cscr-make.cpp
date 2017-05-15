@@ -9,11 +9,12 @@
 #include <stdlib.h>
 
 int main(const int argc, const char** argv) {
-  string src;
-  if (*++argv) {
-    src = *argv;
+  if (!*++argv) {
+    printf("cscr-make requires at least one argument\n");
+    return 1;
   }
 
+  const string src = *argv;
   const string srcLoc = getSrcLoc(src);
   const string binLoc = getBinLoc(src);
 

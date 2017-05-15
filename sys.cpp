@@ -12,7 +12,7 @@ const int sys(const string& toRun) {
 const string qx(const string& toRun) {
   const size_t bufSiz = 128;
   char buf[bufSiz];
-  string result = "";
+  string result;
   FILE* const pipe = popen(toRun.c_str(), "r");
   if (!pipe) {
     throw std::runtime_error("popen() failed!");

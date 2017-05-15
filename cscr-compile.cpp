@@ -1,5 +1,6 @@
 #include "sys.h"
 #include "loc.h"
+#include "compile.h"
 
 #include <linux/limits.h>
 #include <unistd.h>
@@ -9,21 +10,20 @@
 #include <stdlib.h>
 
 int main(const int argc, const char** argv) {
-  string src;
-  if (*++argv) {
-    src = *argv;
+  if (!*++argv) {
+    printf("csrc-compile requires at least one argument\n");
+    return 1;
   }
 
+  const string src = *argv;
   const string binLoc = getBinLoc(src);
 
-  const string compiler = "/usr/bin/g++ -O2 -o " + binLoc + " libcscr.so -xc++ - ";
-
   std::ifstream infile(src.c_str());
-  string source_contents = "\n";
+  string srcContents = "\n";
   string line;
   getline(infile, line);
   while (getline(infile, line)) {
-    source_contents += line + "\n";
+    srcContents += line + "\n";
   }
 
   char binLoc_dirname_cstr[PATH_MAX];
@@ -31,15 +31,8 @@ int main(const int argc, const char** argv) {
 
   dirname(binLoc_dirname_cstr);
   const string binLoc_dirname = binLoc_dirname_cstr;
-  system(("mkdir -p " + binLoc_dirname).c_str());
+  sys("mkdir -p " + binLoc_dirname);
 
-  FILE* const file = popen(compiler.c_str(), "w");
-  fwrite(source_contents.c_str(),
-         sizeof(char),
-         source_contents.length(),
-         file);
-  const int comp_res = pclose(file);
-
-  return WEXITSTATUS(comp_res);
+  return compile(srcContents, binLoc);
 }
 

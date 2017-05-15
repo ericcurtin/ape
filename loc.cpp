@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 const string getSrcLoc(const string& src) {
-  static string srcLoc = "";
+  static string srcLoc;
   if (srcLoc.empty()) {
     char cwd[PATH_MAX];
     getcwd(cwd, sizeof(cwd));

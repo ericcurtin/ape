@@ -1,7 +1,7 @@
 project(cscr)
 cmake_minimum_required(VERSION 2.8)
 
-add_library(${PROJECT_NAME}-lib SHARED sys.cpp loc.cpp str.cpp)
+add_library(${PROJECT_NAME}-lib SHARED sys.cpp loc.cpp str.cpp compile.cpp)
 set_target_properties(${PROJECT_NAME}-lib PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 install(TARGETS ${PROJECT_NAME}-lib DESTINATION /usr/lib/)
 
