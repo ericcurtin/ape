@@ -2,7 +2,7 @@
 
 using std::string;
 
-const int sys(const char* const toRun);
+const int sys(const string& toRun);
 
-const string qx(const char* const toRun);
+const string qx(const string& toRun);
 

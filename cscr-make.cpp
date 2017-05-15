@@ -28,6 +28,6 @@ int main(const int argc, const char** argv) {
     }
   }
 
-  return sys(("cscr-compile " + src).c_str());
+  return sys("cscr-compile " + src);
 }
 

@@ -19,10 +19,10 @@ int main(const int argc, const char** argv) {
   if (*++argv) {
     src = *argv;
 
-    sys(("cscr-make " + src).c_str());
+    sys("cscr-make " + src);
 
     const string binLoc = getBinLoc(src);
-    return sys(binLoc.c_str());    
+    return sys(binLoc);    
   }
 
   return 1;

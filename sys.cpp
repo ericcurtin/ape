@@ -4,16 +4,16 @@
 #include <stdio.h>
 #include <stdexcept>
 
-const int sys(const char* const toRun) {
-  const int cscr = system(toRun);
+const int sys(const string& toRun) {
+  const int cscr = system(toRun.c_str());
   return WEXITSTATUS(cscr);
 }
 
-const string qx(const char* const toRun) {
+const string qx(const string& toRun) {
   const size_t bufSiz = 128;
   char buf[bufSiz];
   string result = "";
-  FILE* const pipe = popen(toRun, "r");
+  FILE* const pipe = popen(toRun.c_str(), "r");
   if (!pipe) {
     throw std::runtime_error("popen() failed!");
   }
