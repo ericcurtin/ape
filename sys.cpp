@@ -5,8 +5,8 @@
 #include <stdexcept>
 
 const int sys(const string& toRun) {
-  const int ape = system(toRun.c_str());
-  return WEXITSTATUS(ape);
+  const int ret = system(toRun.c_str());
+  return WEXITSTATUS(ret);
 }
 
 const string qx(const string& toRun) {
