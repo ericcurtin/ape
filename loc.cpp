@@ -1,10 +1,10 @@
 #include "loc.h"
 
-// for osx
-#include <sys/syslimits.h>
-
-// for linux
-#include <linux/limits.h>
+#if __linux__
+  #include <linux/limits.h>
+#else
+  #include <sys/syslimits.h>
+#endif
 
 #include <unistd.h>
 

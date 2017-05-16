@@ -11,3 +11,5 @@ compiler:
 script:
   - cmake . && make -j3 VERBOSE=1
 
+sudo: false
+
