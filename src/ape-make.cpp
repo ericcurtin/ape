@@ -7,7 +7,7 @@
 #include <libgen.h>
 #include <stdlib.h>
 
-int main(const int argc, const char** argv) {
+int main(const int, const char** argv) {
   if (!*++argv) {
     printf("ape-make requires at least one argument\n");
     return 1;

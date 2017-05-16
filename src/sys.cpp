@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdexcept>
 
-const int sys(const string& toRun) {
+int sys(const string& toRun) {
   const int ret = system(toRun.c_str());
   return WEXITSTATUS(ret);
 }

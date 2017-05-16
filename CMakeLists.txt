@@ -1,6 +1,8 @@
 project(ape)
 cmake_minimum_required(VERSION 2.8)
 
+add_definitions(-O2 -Werror -Wall -Wextra -Wconversion -Wsign-conversion -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Wcast-qual -Woverloaded-virtual -Weffc++ -pedantic -Wno-unused-result)
+
 add_library(${PROJECT_NAME}-lib SHARED src/sys.cpp src/loc.cpp src/str.cpp src/compile.cpp)
 set_target_properties(${PROJECT_NAME}-lib PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 install(TARGETS ${PROJECT_NAME}-lib DESTINATION /usr/lib/)
@@ -22,5 +24,5 @@ set_target_properties(${PROJECT_NAME}-compile PROPERTIES OUTPUT_NAME bin/${PROJE
 target_link_libraries(${PROJECT_NAME}-compile ${PROJECT_NAME}-lib)
 install(TARGETS ${PROJECT_NAME}-compile DESTINATION /usr/bin/)
 
-set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_BUILD_TYPE Debug)
 

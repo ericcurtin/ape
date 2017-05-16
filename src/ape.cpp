@@ -16,7 +16,7 @@ using std::string;
 using std::getline;
 using std::cin;
 
-int main(const int argc, const char** argv) {
+int main(const int, const char** argv) {
   if (*++argv) {
     const string src = *argv;
 
