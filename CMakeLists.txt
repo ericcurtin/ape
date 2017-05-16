@@ -26,3 +26,5 @@ install(TARGETS ${PROJECT_NAME}-compile DESTINATION /usr/bin/)
 
 #set(CMAKE_BUILD_TYPE Debug)
 
+include(cmake/packaging.cmake)
+

@@ -29,3 +29,14 @@
 *.app
 
 CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+CPackConfig.cmake
+CPackSourceConfig.cmake
+Makefile
+_CPack_Packages/
+bin/
+cmake/
+cmake_install.cmake
+install_manifest.txt
+
