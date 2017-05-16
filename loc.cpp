@@ -1,6 +1,11 @@
 #include "loc.h"
 
+// for osx
+#include <sys/syslimits.h>
+
+// for linux
 #include <linux/limits.h>
+
 #include <unistd.h>
 
 const string getSrcLoc(const string& src) {
