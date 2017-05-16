@@ -10,7 +10,7 @@
 
 int main(const int argc, const char** argv) {
   if (!*++argv) {
-    printf("cscr-make requires at least one argument\n");
+    printf("ape-make requires at least one argument\n");
     return 1;
   }
 
@@ -29,6 +29,6 @@ int main(const int argc, const char** argv) {
     }
   }
 
-  return sys("cscr-compile " + src);
+  return sys("ape-compile " + src);
 }
 

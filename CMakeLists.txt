@@ -1,4 +1,4 @@
-project(cscr)
+project(ape)
 cmake_minimum_required(VERSION 2.8)
 
 add_library(${PROJECT_NAME}-lib SHARED sys.cpp loc.cpp str.cpp compile.cpp)

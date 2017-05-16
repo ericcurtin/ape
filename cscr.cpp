@@ -20,7 +20,7 @@ int main(const int argc, const char** argv) {
   if (*++argv) {
     const string src = *argv;
 
-    sys("cscr-make " + src);
+    sys("ape-make " + src);
 
     const string binLoc = getBinLoc(src);
     return sys(binLoc);    
@@ -36,6 +36,6 @@ int main(const int argc, const char** argv) {
     return compRes;
   }
 
-  return sys("/tmp/cscr-exe");
+  return sys("/tmp/ape-exe");
 }
 
