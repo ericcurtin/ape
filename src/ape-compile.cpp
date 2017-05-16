@@ -11,7 +11,7 @@
 
 int main(const int argc, const char** argv) {
   if (!*++argv) {
-    printf("csrc-compile requires at least one argument\n");
+    printf("ape-compile requires at least one argument\n");
     return 1;
   }
 
