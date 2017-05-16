@@ -1,8 +1,8 @@
 #include "sys.h"
 #include "loc.h"
 #include "compile.h"
+#include "limits.h"
 
-#include <linux/limits.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <fstream>

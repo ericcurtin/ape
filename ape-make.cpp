@@ -1,7 +1,6 @@
 #include "sys.h"
 #include "loc.h"
 
-#include <linux/limits.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <fstream>

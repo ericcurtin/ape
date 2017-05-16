@@ -1,10 +1,5 @@
 #include "loc.h"
-
-#if __linux__
-  #include <linux/limits.h>
-#else
-  #include <sys/syslimits.h>
-#endif
+#include "limits.h"
 
 #include <unistd.h>
 
