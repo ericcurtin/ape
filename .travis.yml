@@ -1,22 +1,7 @@
-sudo: false
-services:
-  - docker
-
-cache:
-    directories:
-     - $HOME/.cache
+---
+services: docker
 
 language: cpp
-
-env:
-    matrix:
-      - OS=el DIST=6
-      - OS=el DIST=7
-      - OS=fedora DIST=25
-      - OS=opensuse DIST=42.2
-      - OS=ubuntu DIST=trusty
-      - OS=ubuntu DIST=xenial
-      - OS=ubuntu DIST=xenial ARCH=i386
 
 os:
   - linux
@@ -27,5 +12,5 @@ compiler:
   - gcc
 
 script:
-  - cmake . && make -j3 VERBOSE=1
+  - ./build.sh && if [ $(uname) == "Linux" ]; then sudo make install; scripts/travis.ape; fi
 

@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 
 int compile(const string& toCompile, const string& binLoc) {
-  const string compiler = "/usr/bin/g++ -O2 -o " + binLoc + " libape.so -xc++ - ";
+  const string compiler = "/usr/bin/g++ -O2 -o " + binLoc + " -xc++ - -lape";
   FILE* const file = popen(compiler.c_str(), "w");
   fwrite(toCompile.c_str(), sizeof(char), toCompile.length(), file);
   const int compRes = pclose(file);

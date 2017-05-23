@@ -36,7 +36,12 @@ CPackSourceConfig.cmake
 Makefile
 _CPack_Packages/
 bin/
-cmake/
 cmake_install.cmake
 install_manifest.txt
+
+*.swp
+*.deb
+*.rpm
+*.tar.Z
+*.tar.gz
 

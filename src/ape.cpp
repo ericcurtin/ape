@@ -1,6 +1,7 @@
-#include "sys.h"
-#include "loc.h"
-#include "compile.h"
+#include "lib/sys.h"
+#include "lib/loc.h"
+#include "lib/compile.h"
+#include "lib/convert.h"
 
 #include <iostream>
 #include <stdio.h>
@@ -17,25 +18,29 @@ using std::getline;
 using std::cin;
 
 int main(const int, const char** argv) {
-  if (*++argv) {
-    const string src = *argv;
+  vector<string> argV = toVector(argv);
+  if (argV.size() < 2) {
+    string srcContents;
+    for (string line; getline(cin, line);) {
+      srcContents += line + "\n";
+    }
 
-    sys("ape-make " + src);
+    const int compRes = compile(srcContents);
+    if (compRes) {
+      return compRes;
+    }
 
-    const string binLoc = getBinLoc(src);
-    return sys(binLoc);    
+    return sys("/tmp/ape-exe", argV);
+  }
+  const string src = argV[1];
+
+  const int makeRes = sys("ape-make " + src);
+  if (makeRes) {
+    return makeRes;
   }
 
-  string srcContents;
-  for (string line; getline(cin, line);) {
-    srcContents += line + "\n";
-  }
+  const string binLoc = getBinLoc(src);
 
-  const int compRes = compile(srcContents);
-  if (compRes) {
-    return compRes;
-  }
-
-  return sys("/tmp/ape-exe");
+  return sys(binLoc, argV);
 }
 

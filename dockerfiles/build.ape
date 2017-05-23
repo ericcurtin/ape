@@ -1,0 +1,49 @@
+#!/usr/bin/ape
+
+#include <ape/sys.h>
+#include <ape/convert.h>
+#include <ape/libgen.h>
+
+#include <stdio.h>
+
+int main(const int, const char** argv) {
+  vector<string> argV = toVector(argv);
+  if (argV.size() < 2) {
+    printf("Please specify: \n"
+           "%s build, pull or push\n", apeBasename(argV.front()).c_str());
+    return 1;
+  }
+
+
+  string dirs = qx("ls -d */*");
+  vector<string> dirsVec = toVector(dirs);
+
+  ++argv;
+  ++argv;
+  ++argv;
+  for(vector<string>::iterator it = dirsVec.begin();
+      it != dirsVec.end();
+      ++it) {
+    string imgNam = qx("printf " +
+                       *it +
+                       " | sed 's#/#:#' | sed 's#^#curtine/ape-#'");
+
+    int exitCode = 0;
+    if (string(*argv) == "pull") {
+      exitCode = sys("docker pull " + imgNam);
+    }
+    else if (string(*argv) == "build") {
+      exitCode = sys("docker build -t " + imgNam + " " + *it);
+    }
+    else if (string(*argv) == "push") {
+      exitCode = sys("docker push " + imgNam);
+    }
+
+    if (exitCode) {
+      return exitCode;
+    }
+  }
+
+  return 0;
+}
+

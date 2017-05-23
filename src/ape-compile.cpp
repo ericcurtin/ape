@@ -1,7 +1,8 @@
-#include "sys.h"
-#include "loc.h"
-#include "compile.h"
-#include "limits.h"
+#include "lib/sys.h"
+#include "lib/loc.h"
+#include "lib/compile.h"
+#include "lib/limits.h"
+#include "lib/convert.h"
 
 #include <unistd.h>
 #include <sys/stat.h>
@@ -9,16 +10,19 @@
 #include <libgen.h>
 #include <stdlib.h>
 
+using std::ifstream;
+
 int main(const int, const char** argv) {
-  if (!*++argv) {
-    printf("ape-compile requires at least one argument\n");
+  vector<string> argV = toVector(argv);
+  if (argV.size() < 2) {
+    printf("ape-compile requires at least one argument %lu\n", argV.size());
     return 1;
   }
 
-  const string src = *argv;
+  const string src = argV[1];
   const string binLoc = getBinLoc(src);
 
-  std::ifstream infile(src.c_str());
+  ifstream infile(src.c_str());
   string srcContents = "\n";
   string line;
   getline(infile, line);

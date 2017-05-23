@@ -4,8 +4,15 @@
 #include <stdio.h>
 #include <stdexcept>
 
-int sys(const string& toRun) {
-  const int ret = system(toRun.c_str());
+int sys(const string& toRun, vector<string> argV) {
+  string exe = toRun;
+  for(vector<string>::const_iterator it = argV.begin();
+      it != argV.end();
+      ++it) {
+    exe += " " + *it;
+  }
+
+  const int ret = system(exe.c_str());
   return WEXITSTATUS(ret);
 }
 
