@@ -9,13 +9,15 @@
 #include <fstream>
 #include <libgen.h>
 #include <stdlib.h>
+#include <iostream>
 
 using std::ifstream;
+using std::cout;
 
 int main(const int, const char** argv) {
   vector<string> argV = toVector(argv);
   if (argV.size() < 2) {
-    printf("ape-compile requires at least one argument %lu\n", argV.size());
+    cout << "ape-compile requires at least one argument " << argV.size() << "\n";
     return 1;
   }
 

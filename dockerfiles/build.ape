@@ -9,8 +9,8 @@
 int main(const int, const char** argv) {
   vector<string> argV = toVector(argv);
   if (argV.size() < 2) {
-    printf("Please specify: \n"
-           "%s build, pull or push\n", apeBasename(argV.front()).c_str());
+     cout << "Please specify: \n"
+          << apeBasename(argV.front()) << " build, pull or push\n";
     return 1;
   }
 

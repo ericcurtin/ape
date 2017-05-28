@@ -7,11 +7,14 @@
 #include <fstream>
 #include <libgen.h>
 #include <stdlib.h>
+#include <iostream>
+
+using std::cout;
 
 int main(const int, const char** argv) {
   vector<string> argV = toVector(argv);
   if (argV.size() < 2) {
-    printf("ape-make requires at least one argument\n");
+    cout << "ape-make requires at least one argument\n";
     return 1;
   }
 
