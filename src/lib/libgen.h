@@ -2,7 +2,7 @@
 
 using std::string;
 
-string apeDirname(string& name);
+string apeDirname(const string& name);
 
-string apeBasename(string& name);
+string apeBasename(const string& name);
 

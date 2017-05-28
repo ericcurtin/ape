@@ -4,21 +4,17 @@
 #include "libgen.h"
 #include "limits.h"
 
-string apeDirname(string& name) {
+string apeDirname(const string& name) {
   char nameCstr[PATH_MAX];
   strcpy(nameCstr, name.c_str());
-  dirname(nameCstr);
-  name = nameCstr;
 
-  return name;
+  return dirname(nameCstr);
 }
 
-string apeBasename(string& name) {
+string apeBasename(const string& name) {
   char nameCstr[PATH_MAX];
   strcpy(nameCstr, name.c_str());
-  basename(nameCstr);
-  name = nameCstr;
 
-  return name;
+  return basename(nameCstr);
 }
 
